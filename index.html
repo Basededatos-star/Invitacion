@@ -21,5 +21,26 @@
         </div>
     </div>
 
+    <!-- REPRODUCTOR DE YOUTUBE OCULTO (Música de Cumpleaños Feliz) -->
+    <iframe id="musica-fondo" 
+            src="https://www.youtube.com/embed/3k53XKibh5c?enablejsapi=1&loop=1&playlist=3k53XKibh5c" 
+            allow="autoplay" 
+            style="display: none;">
+    </iframe>
+
+    <!-- SCRIPT PARA EMPEZAR LA MÚSICA CON EL PRIMER TOQUE -->
+    <script>
+        document.addEventListener('click', function() {
+            var iframe = document.getElementById('musica-fondo');
+            iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+        }, { once: true });
+
+        // También funciona si arrastran el dedo para hacer scroll en el teléfono
+        document.addEventListener('touchstart', function() {
+            var iframe = document.getElementById('musica-fondo');
+            iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+        }, { once: true });
+    </script>
+
 </body>
 </html>
